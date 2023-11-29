@@ -1,0 +1,28 @@
+bookPerPub.php?pubid=<?php echo $row['publisherid']; ?>
+
+
+
+fucntion for gettig publsiher names
+
+
+
+function getPubName($conn, $pubid){
+		$query = "SELECT publisher_name FROM publisher WHERE publisherid = '$pubid'";
+		$result = mysqli_query($conn, $query);
+		if(!$result){
+			echo "Can't retrieve data " . mysqli_error($conn);
+			exit;
+		}
+		if(mysqli_num_rows($result) == 0){
+			echo "Empty books ! Something wrong! check again";
+			exit;
+		}
+
+		$row = mysqli_fetch_assoc($result);
+		return $row['publisher_name'];
+	}
+
+
+
+
+    just paste in  database function
